@@ -12,14 +12,12 @@ CREATE TABLE "departments" (
      )
 );
 
-CREATE TABLE "dept_emp" (
-    "emp_no" INT   NOT NULL,
-    "dept_no" VARCHAR   NOT NULL
-);
-
-CREATE TABLE "dept_manager" (
-    "dept_no" VARCHAR   NOT NULL,
-    "emp_no" INT   NOT NULL
+CREATE TABLE "titles" (
+    "title_id" VARCHAR   NOT NULL,
+    "title" VARCHAR   NOT NULL,
+    CONSTRAINT "pk_titles" PRIMARY KEY (
+        "title_id"
+     )
 );
 
 CREATE TABLE "employees" (
@@ -35,18 +33,22 @@ CREATE TABLE "employees" (
      )
 );
 
+CREATE TABLE "dept_emp" (
+    "emp_no" INT   NOT NULL,
+    "dept_no" VARCHAR   NOT NULL
+);
+
+CREATE TABLE "dept_manager" (
+    "dept_no" VARCHAR   NOT NULL,
+    "emp_no" INT   NOT NULL
+);
+
+
 CREATE TABLE "salaries" (
     "emp_no" INT   NOT NULL,
     "salary" DEC   NOT NULL
 );
 
-CREATE TABLE "titles" (
-    "title_id" VARCHAR   NOT NULL,
-    "title" VARCHAR   NOT NULL,
-    CONSTRAINT "pk_titles" PRIMARY KEY (
-        "title_id"
-     )
-);
 
 ALTER TABLE "dept_emp" ADD CONSTRAINT "fk_dept_emp_emp_no" FOREIGN KEY("emp_no")
 REFERENCES "employees" ("emp_no");
